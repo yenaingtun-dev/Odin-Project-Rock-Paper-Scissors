@@ -7,10 +7,10 @@ let totals = [];
 // gameStart.addEventListener('change', () => {
 //     game();
 // })
-let start = document.getElementById("start");
-start.addEventListener("click", () => {
-    game();
-});
+// let start = document.getElementById("start");
+// start.addEventListener("click", () => {
+//     game();
+// });
 
 function logic(value) {
     let randomItem = [paper, rock, scissor];
@@ -59,6 +59,19 @@ function logic(value) {
             // console.log(userChoice + " " + pcChoice);
             break;
     }
+}
+
+function playRoundOne(value) {
+
+    console.log(value);
+}
+
+function playRoundTwo(params) {
+    console.log('two');
+}
+
+function playRoundThree(params) {
+    console.log('three');
 }
 
 function game() {
