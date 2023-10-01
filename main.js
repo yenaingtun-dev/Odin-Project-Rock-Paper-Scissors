@@ -3,6 +3,9 @@ let rock = "paper";
 let scissor = "scissor";
 let result;
 let totals = [];
+let userPoint = 0;
+let pcPoint = 0;
+let count = 0;
 // let gameStart = document.getElementById('items');
 // gameStart.addEventListener('change', () => {
 //     game();
@@ -61,17 +64,83 @@ function logic(value) {
     }
 }
 
-function playRoundOne(value) {
+function play(value) {
+    let randomItem = [paper, rock, scissor];
+    let random = Math.floor(Math.random() * randomItem.length);
+    let pcChoice = randomItem[random];
+    let userChoice = value;
+    let highestNumber;
+    if (userChoice) {
+        count++;
+    }
 
-    console.log(value);
+    if (count < 6) {
+        // logic
+            switch (true) {
+            case userChoice === "rock" && pcChoice === "rock":
+                result = "it's draw";
+                userPoint++;
+                pcPoint++;
+                break;
+            case userChoice === "paper" && pcChoice === "paper":
+                result = "it's draw";
+                userPoint++;
+                pcPoint++;
+                break;
+            case userChoice === "scissor" && pcChoice === "scissor":
+                result = "it's draw";
+                userPoint++;
+                pcPoint++;
+                break;
+            case userChoice === "paper" && pcChoice === "rock":
+                result = "u win";
+                userPoint++;
+                break;
+            case userChoice === "scissor" && pcChoice === "paper":
+                result = "u win";
+                userPoint++;
+                break;
+            case userChoice === "rock" && pcChoice === "scissor":
+                result = "u win";
+                userPoint++;
+                break;
+            case userChoice === "paper" && pcChoice === "scissor":
+                result = "pc win";
+                pcPoint++;
+                break;
+            case userChoice === "scissor" && pcChoice === "rock":
+                result = "pc win";
+                pcPoint++;
+                break;
+            case userChoice === "rock" && pcChoice === "scissor":
+                result = "pc win";
+                pcPoint++;
+                break;
+            default:
+                break;
+        }
+        document.getElementById('user').innerText = userPoint;
+        document.getElementById('pc').innerText = pcPoint;
+    } else {
+        if (userPoint > pcPoint) {
+            highestNumber = 'User Win the round with userpoint ' + userPoint + ' pcpoint ' + pcPoint;
+        } else if (pcPoint > userPoint) {
+            highestNumber = 'Pc win the round with pcpoint ' + pcPoint + ' userpoint '  + userPoint;
+        } else {
+            highestNumber = 'It is draw pcpoint ' + pcPoint + ' userpoint ' + userPoint;
+        }
+        alert(highestNumber);
+    }
+
+
 }
 
-function playRoundTwo(params) {
-    console.log('two');
-}
-
-function playRoundThree(params) {
-    console.log('three');
+function rest() {
+        userPoint = 0;
+        pcPoint = 0;
+        count = 0;
+        document.getElementById('user').innerText = 0;
+        document.getElementById('pc').innerText = 0;
 }
 
 function game() {
